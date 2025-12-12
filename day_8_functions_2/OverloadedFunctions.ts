@@ -53,4 +53,34 @@ console.log("Mixed Combination 2:", mixedCombination2);
 // let invalidCombination: boolean = combine(true, false); // Error: No overload matches this call
 // Uncommenting the above line will result in a compilation error, demonstrating type safety with overloaded functions.
 
+// example with different number of parameters
+function greet(name: string): string;
+function greet(name: string, age: number): string;
+function greet(name: string, age?: number): string {
+    if (age !== undefined) {
+        return `Hello, ${name}. You are ${age} years old.`;
+    } else {
+        return `Hello, ${name}.`;
+    }
+}
+// Usage of overloaded greet function
+console.log(greet("Alice"));           // Output: "Hello, Alice."
+console.log(greet("Bob", 30));         // Output: "Hello, Bob. You are 30 years old."
+
+// example with different return types
+function getValue(flag: true): string;
+function getValue(flag: false): number;
+function getValue(flag: boolean): string | number {
+    if (flag) {
+        return "You passed true";
+    } else {
+        return 0;
+    }
+}
+// Usage of overloaded getValue function
+let value1: string = getValue(true);   // Output: "You passed true"
+let value2: number = getValue(false);  // Output: 0
+console.log("Value when true:", value1);
+console.log("Value when false:", value2);
+
 // End of OverloadedFunctions.ts
